@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma" //Saida nova do prisma para criar uma pasta chamada generated para criar dentro as tipagens de nossos model de tabela.
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String   @unique
+  name      String?
+  password_hash  String
+  @@map("users")
+  checkIns CheckIn[]
+}
+
+
+model CheckIn {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at DateTime @default(now())
+  validated_at DateTime?
+
+  user User @relation(fields: [user_id], references: [id])
+  user_id String @db.Uuid
+
+  gym Gym @relation(fields: [gym_id], references: [id])
+  gym_id String @db.Uuid
+
+  @@map("check_ins")
+}
+
+model Gym {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title      String
+  description String?
+  phone      String?
+  latitude Decimal
+  longitude Decimal
+
+  checkIns CheckIn[]
+
+  @@map("gyms")
+  
+}
