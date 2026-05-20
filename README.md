@@ -1,6 +1,6 @@
 # GymLife app
 
-## Requisitos funcionais (funcionalidades em sí que o app vai ter)
+## RFs
 - [ ] Deve ser possível se cadastrar;
 - [ ] Deve ser possível se autenticar;
 - [ ] Deve ser possível obter o perfil de um usuário logado;
@@ -13,7 +13,7 @@
 - [ ] Deve ser possível cadastrar uma academia;
 
 
-## Regra de Negócio (descrição de como será o fluxo de cada Requisito funcional)
+## RNs
 - [ ] O usuário não pode se cadastrar com e-mail duplicado;
 - [ ] O usuário não pode realizar dois check-ins no mesmo dia;
 - [ ] O usuário não pode fazer check-in se não estiver (100 m) da academia;
@@ -23,7 +23,7 @@
 
 
 
-## Requisito não funcional (tarefas que o app vai precisar ter que é invisível para o usuário)
+## RNFs
 - [ ] A senha do usuário precisa ser criptografada;
 - [ ] Os dados da aplicação precisam estar persistidos em um banco Postgres;
 - [ ] Todas as listas de dados precisam estar paginadas com no máximo 20 itens por página;
